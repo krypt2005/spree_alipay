@@ -1,0 +1,32 @@
+<h3 class="heading"> <%= image_tag "spinner.gif"%> <%= Spree.t(:redirecting_for_payment) %></h3>
+
+<fieldset id="order_details" class="pg-redirect-od">
+  <div class="clear"></div>
+  <p style='text-transform:uppercase;font-weight:bold; margin:0px 0px 10px 10px;'>
+    <%= Spree.t(:order_number) %> 
+    <%= @order.number %>
+    (<%= link_to "&larr; #{Spree.t(:back_to_payment_options)}".html_safe, checkout_state_path(:payment) %>)</p>
+  <%= render :partial => 'spree/shared/order_details', :locals => {:order => @order} -%>
+</fieldset>
+
+<%if @gateway.name == 'UnionPay'%>
+  <% finalurl =   @gateway.preferred_url+ "?acqID=99020344&backURL=http://baidu.haishang.co/?wc-api=WC_Alipay&charSet=UTF-8&frontURL=http://baidu.haishang.co/?wc-api=WC_Alipay&merID=800039253992057&merReserve=PRUC&orderAmount=#{@order.total.to_s}&orderCurrency=USD&orderNum=#{@order.number.to_s}&paymentSchema=UP&signType=MD5&transTime=#{Time.now.strftime('%Y%m%d%H%M%S')}&transType=PURC&version=VER000000002&signature="%>
+  <% finalurl1 = "acqID=99020344&backURL=http://baidu.haishang.co/?wc-api=WC_Alipay&charSet=UTF-8&frontURL=http://baidu.haishang.co/?wc-api=WC_Alipay&merID=800039253992057&merReserve=PRUC&orderAmount=#{@order.total.to_s}&orderCurrency=USD&orderNum=#{@order.number.to_s}&paymentSchema=UP&signType=MD5&transTime=#{Time.now.strftime('%Y%m%d%H%M%S')}&transType=PURC&version=VER0000000024575c66b0bf74040bc8e721174828301"%>
+<%else%>
+  <% finalurl =   @gateway.preferred_url+ "?acqID=99020344&backURL=http://baidu.haishang.co/?wc-api=WC_Alipay&charSet=UTF-8&frontURL=http://baidu.haishang.co/?wc-api=WC_Alipay&merID=800039253992057&merReserve=PRUC&orderAmount=#{@order.total.to_s}&orderCurrency=USD&orderNum=#{@order.number.to_s}&paymentSchema=AP&signType=MD5&transTime=#{Time.now.strftime('%Y%m%d%H%M%S')}&transType=PURC&version=VER000000002&signature="%>
+  <% finalurl1 = "acqID=99020344&backURL=http://baidu.haishang.co/?wc-api=WC_Alipay&charSet=UTF-8&frontURL=http://baidu.haishang.co/?wc-api=WC_Alipay&merID=800039253992057&merReserve=PRUC&orderAmount=#{@order.total.to_s}&orderCurrency=USD&orderNum=#{@order.number.to_s}&paymentSchema=AP&signType=MD5&transTime=#{Time.now.strftime('%Y%m%d%H%M%S')}&transType=PURC&version=VER0000000024575c66b0bf74040bc8e721174828301"%>
+<%end%>
+<%sign = Digest::MD5.hexdigest(finalurl1)%>
+
+<% finalurl= finalurl+sign%>
+
+<a id="alipay_form" href="<%=finalurl%>" class="" title="" style="display:none;"></a>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    setTimeout(function(){
+      document.getElementById("alipay_form").click();
+    }, 5000)
+  });
+</script>
+
