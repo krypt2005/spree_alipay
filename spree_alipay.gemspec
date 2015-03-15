@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.0.0'
   s.author            = ['krypt2005']
   s.email             = ['krypt2005@gmail.com']
-  s.homepage          = 'http://vasilec.blogspot.de/'
+  s.homepage          = ''
 
   s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*','db/migrate/*','config/locales/en.yml','config/routes.rb']
   s.require_path = 'lib'

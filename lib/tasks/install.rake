@@ -1,4 +1,7 @@
-namespace :spree_alipay do
+module SpreeAlipay
+  module Generators
+    class InstallGenerator < Rails::Generators::Base
+
   desc "Copies all migrations and assets (NOTE: This will be obsolete with Rails 3.1)"
   task :install do
     Rake::Task['spree_alipay:install:migrations'].invoke
@@ -22,4 +25,6 @@ namespace :spree_alipay do
     end
   end
 
+end
+end
 end
