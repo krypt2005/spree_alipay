@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email             = ['krypt2005@gmail.com']
   s.homepage          = 'http://vasilec.blogspot.de/'
 
-  s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*']
+  s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*','db/migrate/*','config/locales/en.yml','config/routes.rb']
   s.require_path = 'lib'
   s.requirements << 'none'
 
