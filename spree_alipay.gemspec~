@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email             = ['krypt2005@gmail.com']
   s.homepage          = 'https://github.com/krypt2005/spree_alipay'
 
-  #s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*','app/controllers/spree/*','db/migrate/*','config/locales/en.yml','config/routes.rb']
+  s.files        = `git ls-files`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
