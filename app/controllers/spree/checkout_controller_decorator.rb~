@@ -1,5 +1,4 @@
-module Spree
-  CheckoutController.class_eval do
+Spree::CheckoutController.class_eval do
 
   before_filter :redirect_for_alipay, :only => :update
 
@@ -15,5 +14,4 @@ module Spree
           redirect_to gateway_alipay_path(:gateway_id => @payment_method.id, :id => @order.number)
         end
     end
-end
 end
