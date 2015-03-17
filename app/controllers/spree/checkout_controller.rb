@@ -1,6 +1,5 @@
 module Spree
-  CheckoutController.class_eval do
-
+  class CheckoutController  < Spree::CheckoutController
   before_filter :redirect_for_alipay, :only => :update
 
   private
